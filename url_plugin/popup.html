@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+	  <meta charset="UTF-8">
+	    <title>Getting Started Extension's Popup</title>
+	    <style>
+	    body,html,div,p,a,input{
+	    	margin: 0;
+	    	padding: 0;
+	    	border: 0;
+	    }
+	    body {
+				overflow: hidden;
+			 	width: 300px;
+			 	height: 400px;
+			  	position: relative;
+			  	border-top: solid 5px #00ACEE;
+			  	margin: 0;
+			  	font-size: 14px;
+				font-family: "Microsoft YaHei";
+			  	background: #1B2636;
+			  	background:-webkit-gradient(radial,150 200,0,150 200,200,from(#2D405B),to(#1B2636));
+			  	box-shadow: 0 3px 9px rgba(0,172,238,0.3) inset;
+			  	text-align: center;
+		      }
+		p{
+			color: white;
+			word-break: break-all;
+			text-align: center;
+			margin-top: 4px;
+		}
+		a{
+			-webkit-transition: 0.25s;
+		    transition: 0.25s;
+		}
+		input[type="text"],#btn{
+			  width: 224px;
+			  padding: 0px 6px;
+			  line-height: 32px;
+			  height: 32px;
+			  box-shadow: 0 6px 4px rgba(0,0,0,0.2); 
+			  border-radius: 5px;
+			  margin: 8px auto;
+		}
+		input[type="text"]{
+			  -webkit-transition: 0.25s;
+		      transition: 0.25s;
+			  box-shadow: 0 0 8px #fff inset;
+		}
+		input[type="text"]:focus{
+			  outline: none;
+			  box-shadow: 0 0 8px #00ACEE;
+			  box-shadow: 0 0 8px #00ACEE inset;
+		}
+		#btn{
+			text-decoration: none;
+			color: white;
+			font-size: 16px;
+			text-align: center;
+			background: #9654B6;
+			display: block;
+		}
+		#btn:hover{
+			background: #49C085;
+		}
+		.switch{
+			margin: 10px 0;
+			width: 70px;
+			cursor: pointer;
+			position: relative;
+			left: 207px;
+		}
+		.switch a{
+			border-radius: 3px;
+			background: #476D83;
+			color: #476D83;
+			font-size: 12px;
+			width: 14px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			display: inline-block;
+			cursor: pointer;
+			vertical-align: middle;
+		}
+		.selected_f #switch_f,
+		.selected_d:hover #switch_f,
+		.selected_d #switch_d,
+		.selected_f:hover #switch_d{
+			background: #00ACEE;
+			color: white;
+			width: 34px;
+		}
+		.selected_d #switch_f,
+		.selected_f:hover #switch_f,
+		.selected_f #switch_d,
+		.selected_d:hover #switch_d{
+			background: #476D83;
+			color: #476D83;
+			width: 14px;
+		}
+		#tmt{
+			background: url(tmt_logo.png);
+			display: block;
+			width: 43px;
+			height: 25px;
+			position: absolute;
+			left: 10px;
+			bottom: 10px;
+		}
+		  #warning{
+				color: #00ACEE;
+				display: none;
+		  }
+			.qrcode{
+				width: 120px;
+				display: block;
+				margin: 0 auto;
+			}
+			#result_show{
+				display: none;
+				position: relative;
+			}
+			#reset{
+				font-size: 12px;
+				width: 40px;
+				position: absolute;
+				right: 10px;
+				bottom: -45px;
+				text-decoration: none;
+				color: white;
+				display: inline-block;
+				width:16px;
+				height: 16px;
+				border-radius:16px;
+				background: #00ACEE;
+				line-height: 16px;
+				vertical-align: middle;
+			}
+			#reset:hover{
+				background: #9654B6;
+				color: #9654B6;
+			}
+			.mode{
+				width: 300px;
+				position: absolute;
+				left: 0;
+			}
+			.mode_1{
+
+			}
+			.mode_2{
+				left: 400px;
+			}
+			.qrcode_box{
+				height: 120px;
+				margin: 10px 0;
+				background: url(loading.gif) center center no-repeat;
+			}
+			.anime-rotate {
+				 -webkit-animation-name: 'rotate';
+				 -webkit-animation-duration: 0.5s;
+			 }
+			@-webkit-keyframes 'rotate'{
+				0%{
+					-webkit-transform: scale(0,0) rotate(90deg);
+					opacity: 0;
+				}
+				100%{
+					-webkit-transform: scale(1,1) rotate(0deg);
+					opacity: 1;
+				}
+			}
+		.anime-disappear{
+			-webkit-animation-name: 'disappear';
+			-webkit-animation-duration: 1s;
+		}
+		@-webkit-keyframes 'disappear'{
+			0%{
+				-webkit-transform: scale(1,1);
+				opacity: 1;
+				left: 0px;
+			}
+			30%{
+				-webkit-transform: scale(0.7,0.7);
+				opacity: 0.2;
+				left: 0px;
+			}
+			80%{
+				-webkit-transform: scale(0.7,0.7);
+				opacity: 0;
+				left: -400px;
+			}
+			100%{
+				-webkit-transform: scale(0.7,0.7);
+				opacity: 0;
+				left: -400px;
+			}
+		}
+		.anime-appear{
+			-webkit-animation-name: 'appear';
+			-webkit-animation-duration: 1s;
+		}
+		@-webkit-keyframes 'appear'{
+			0%{
+				-webkit-transform: scale(0.7,0.7);
+				opacity: 0;
+				left: 400px;
+			}
+			60%{
+				-webkit-transform: scale(0.7,0.7);
+				opacity: 0;
+				left: 400px;
+			}
+			80%{
+				-webkit-transform: scale(0.7,0.7);
+				opacity: 0.2;
+				left: 0px;
+			}
+			100%{
+				-webkit-transform: scale(1,1);
+				opacity: 1;
+				left: 0px;
+			}
+		}
+	    </style>
+  </head>
+  <body>
+		<div class="switch selected_f">
+			<a id="switch_f" title="项目生成">F</a>
+			<a id="switch_d" title="直接生成">D</a>
+		</div>
+		<div class="mode mode_1">
+			<div id="file_box">
+				<p id="info">请输入你所需预览的在线地址</p>
+				<input type="text" id="onlineURL" value="" placeholder="http://f2e.tmt.io"/>
+				<p id="info">请输入你项目所在文件夹名称</p>
+				<input type="text" id="inputFile" value="" placeholder="f2e_proj"/> <a href="#" id="btn">确定</a>
+				<p id="warning">填输入框啊亲！</p>
+			</div>
+			<div id="result_show">
+				<p>二维码</p>
+				<div class="qrcode_box">
+					<img src="" alt="" class="qrcode"  id="qrcode"/>
+				</div>
+				<p>生成链接</p>
+				<input class="input" id="result" type="text" value="" focus/>
+				<p>短链接</p>
+				<input class="input" id="short" type="text" value=""/>
+				<a href="#" id="reset" title="重置">R</a>
+			</div>
+		</div>
+		<div class="mode mode_2">
+			<p>二维码</p>
+			<div class="qrcode_box">
+				<img src="" alt="" class="qrcode" id="qrcode_2"/>
+			</div>
+			<p>短链接</p>
+			<input class="input" id="short_2" type="text" value=""/>
+		</div>
+	<a id="tmt" href="http://av.cm" target="_blank"></a>
+  </body>
+</html>
+
+</body>
+	    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="client.js"> </script>
+	    <script type="text/javascript" src="jquery.urlshortener.js"></script>
+		<script type="text/javascript" src="popup.js"></script>
+</html>
