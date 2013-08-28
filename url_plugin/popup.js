@@ -76,6 +76,7 @@ function showResult(link){
 		resultShow.style.display = "block";
 		resultBox.value = link;
 		short_1.value = setGoogleAPI(link);
+		resultLink.shortLink = short_1.value;
 		/*short_1.value = setSinaAPI(link);*/
 		createQR(resultLink.shortLink,qrcode);
 		reset.addEventListener("click",function(){
