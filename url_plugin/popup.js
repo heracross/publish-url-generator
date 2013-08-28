@@ -10,6 +10,7 @@ chrome.tabs.getSelected(null,function(tab){
 var button = document.getElementById("btn");
 var warning = document.getElementById("warning");
 var resultBox = document.getElementById("result");
+var resultA = document.getElementById("result_a");
 var resultShow = document.getElementById("result_show");
 var file_box = document.getElementById("file_box");
 var inputBox = document.getElementsByTagName("input")[0];
@@ -35,13 +36,9 @@ var resultLink = {
 
 //初始化所有的输入框点击时自动选择
 function InputSelected(){
-	for(var i=0;i<inputs.length;i++){
-		(function(num){
-			inputs[num].addEventListener("click",function(){
-				this.select();
-			},false);
-		})(i);
-	}	
+	$("input[type=text]").click(function(){
+		$(this).select();
+	});
 }
 
 
@@ -75,6 +72,7 @@ function showResult(link){
 		warning.style.display = "none";
 		resultShow.style.display = "block";
 		resultBox.value = link;
+		resultA.href = link;
 		short_1.value = setGoogleAPI(link);
 		resultLink.shortLink = short_1.value;
 		/*short_1.value = setSinaAPI(link);*/
@@ -191,4 +189,5 @@ function init(){
 			modetwo();
 		}
 	}
+	InputSelected();//初始化输入框自动选择
 }
