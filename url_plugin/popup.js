@@ -166,6 +166,7 @@ function init(){
 				warning.style.display = "block";
 			}else{  //如果有输入，就先保存文件名，然后再判断匹不匹配
 				window.localStorage.link = fileName;
+				window.localStorage.website = online.value;
 				if(!(matchURL(fileName)==null)){
 					resultLink.longLink = matchURL(fileName);
 					showResult(resultLink.longLink);
@@ -180,6 +181,7 @@ function init(){
 	}else{ //否则就显示结果
 
 		if(!(matchURL(window.localStorage.link)==null)){
+			online.value = window.localStorage.website;
 			resultLink.longLink = matchURL(window.localStorage.link);
 			showResult(resultLink.longLink);
 		}else{
