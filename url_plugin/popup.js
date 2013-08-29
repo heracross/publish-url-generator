@@ -47,7 +47,7 @@ function matchURL(fileName){
 	var rex = "(.*)."+fileName+".(.*)";
 	var reg =new RegExp (rex,"g");
 	var ex = online.value;
-	var rex2 = /http:\/\/.(.*)/;
+	var rex2 = /http:\/\/(.*)/;
 	ex = ex.replace(rex2,"$1");
 	ex = "http://" + ex + "/";
 	if(tabURL.match(reg)==null){
