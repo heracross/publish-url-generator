@@ -41,7 +41,7 @@ function InputSelected(){
 	});
 }
 
-
+//test
 //匹配文件名,如果有的话就返回生成好的URL，如果没有则返回false
 function matchURL(fileName){
 	var rex = "(.*)."+fileName+".(.*)";
