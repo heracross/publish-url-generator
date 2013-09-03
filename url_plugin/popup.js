@@ -41,7 +41,6 @@ function InputSelected(){
 	});
 }
 
-
 //匹配文件名,如果有的话就返回生成好的URL，如果没有则返回false
 function matchURL(fileName){
 	var rex = "(.*)."+fileName+".(.*)";
@@ -83,6 +82,8 @@ function showResult(link){
 }
 
 function resetAll(){
+	online.value = window.localStorage.website;
+	inputFile.value = window.localStorage.link;
 	window.localStorage.link = '';
 	file_box.style.display = "block";
 	qrcode.src = "";
