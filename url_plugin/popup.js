@@ -26,6 +26,7 @@ var mode_2 = document.getElementsByClassName("mode_2")[0];
 var inputs = document.getElementsByClassName("input");
 var $switchButton = $('.switch');
 var mode = 0;
+var defaultFile;
 
 var resultLink = {
 	longLink : undefined,
@@ -84,7 +85,7 @@ function showResult(link){
 function resetAll(){
 	online.value = window.localStorage.website;
 	inputFile.value = window.localStorage.link;
-	window.localStorage.link = '';
+	window.localStorage.firstTime = '';
 	file_box.style.display = "block";
 	qrcode.src = "";
 	resultShow.style.display = "none";
@@ -159,7 +160,7 @@ $switchButton.click(function(){
 
 //输入文件名
 function init(){
-	if(!window.localStorage.link){  //如果没有缓存文件名，就显示有按钮的
+	if(!window.localStorage.firstTime){  //如果没有缓存文件名，就显示有按钮的
 
 		button.addEventListener("click",function(){
 			var fileName = inputFile.value;
@@ -168,6 +169,7 @@ function init(){
 			}else{  //如果有输入，就先保存文件名，然后再判断匹不匹配
 				window.localStorage.link = fileName;
 				window.localStorage.website = online.value;
+				window.localStorage.firstTime = 1;
 				if(!(matchURL(fileName)==null)){
 					resultLink.longLink = matchURL(fileName);
 					showResult(resultLink.longLink);
